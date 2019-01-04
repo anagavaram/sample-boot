@@ -16,6 +16,7 @@ node {
   }
   
   stage ('Build Docker Image'){
+    sh "cp target/careers-0.0.1-SNAPSHOT.jar .docker/build/"
     def testImage = docker.build("test-image", ".docker/build/")
   }
   
