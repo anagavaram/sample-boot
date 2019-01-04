@@ -20,4 +20,8 @@ node {
     def testImage = docker.build("test-image", ".docker/build/")
   }
   
+  stage('Docker Push') {
+    docker.withRegistry('https://576561709469.dkr.ecr.us-west-1.amazonaws.com', 'ecr:us-west-1:ecr-login') {
+    docker.image('test-image').push('latest')
+  }
 }
