@@ -21,7 +21,7 @@ node {
   }
   
   stage('Docker Push') {
-    docker.withRegistry('https://576561709469.dkr.ecr.us-west-1.amazonaws.com', 'ecr:us-west-1:ecr-login') {
+    docker.withRegistry('https://576561709469.dkr.ecr.us-west-1.amazonaws.com', 'ecr:us-west-1:ecr-creds') {
       docker.image('test-image').push('latest')
     }
   }
