@@ -15,5 +15,9 @@ node {
    sh 'mvn clean package -U'
   }
   
+  stage ('Build Docker Image'){
+    def dockerfile = 'Dockerfile'
+    def customImage = docker.build("my-image:sample-boot", "-f ${dockerfile} ./docker/build/")
+  }
   
 }

@@ -1,14 +1,15 @@
-FROM java:oracle-java8
+FROM openjdk:8
 
-RUN mkdir /opt/splunk/apps
-WORKDIR /opt/splunk/apps
+RUN mkdir /opt/splunk
+WORKDIR /opt/splunk
 
 RUN useradd -ms /bin/bash newuser
 
-USER newuser
-WORKDIR /home/newuser
+USER root
 
-COPY target/careers-0.0.1-SNAPSHOT.jar /opt/splunk/apps/
+COPY target/careers-0.0.1-SNAPSHOT.jar /opt/splunk
 
-ENTRYPOINT ["java -jar -Xmx1024m /opt/splunk/apps/careers-0.0.1-SNAPSHOT.jar"]
+RUN chmod 755 /opt/splunk
+RUN chmod 755 /opt/splunk/careers-0.0.1-SNAPSHOT.jar
 
+CMD ["/usr/bin/java", "-jar", "-Dspring.profiles.active=default", "/opt/splunk/careers-0.0.1-SNAPSHOT.jar"]
