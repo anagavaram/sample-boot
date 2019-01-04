@@ -7,7 +7,7 @@ RUN useradd -ms /bin/bash newuser
 
 USER root
 
-COPY target/careers-0.0.1-SNAPSHOT.jar /opt/splunk
+COPY ./careers-0.0.1-SNAPSHOT.jar /opt/splunk
 
 RUN chmod 755 /opt/splunk
 RUN chmod 755 /opt/splunk/careers-0.0.1-SNAPSHOT.jar
