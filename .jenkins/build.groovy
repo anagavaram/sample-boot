@@ -4,9 +4,9 @@ node {
 
   stage ('Checkout') {
     // checkout input branch 
-    git credentialsId: 'anagavaram', url: 'https://github.com/anagavaram/sample-boot'
+   checkout scm
 
-     sh "git checkout ${params.BRANCH_NAME}"
+   sh "git checkout ${params.BRANCH_NAME}"
   }
 
 
