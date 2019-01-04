@@ -17,12 +17,12 @@ node {
   
   stage ('Build Docker Image'){
     sh "cp target/careers-0.0.1-SNAPSHOT.jar .docker/build/"
-    def testImage = docker.build("test-image", ".docker/build/")
+    def testImage = docker.build("webmkt-services", ".docker/build/")
   }
   
   stage('Docker Push') {
     docker.withRegistry('https://576561709469.dkr.ecr.us-west-1.amazonaws.com', 'ecr:us-west-1:ecr-creds') {
-      docker.image('test-image').push('latest')
+      docker.image('webmkt-services').push('webmkt-boot')
     }
   }
 }
