@@ -16,8 +16,7 @@ node {
   }
   
   stage ('Build Docker Image'){
-    def dockerfile = 'Dockerfile'
-    def customImage = docker.build("my-image:sample-boot", "-f ${dockerfile} ./docker/build/")
+    def testImage = docker.build("test-image", "./dockerfiles/test")
   }
   
 }
